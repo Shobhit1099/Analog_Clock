@@ -3,10 +3,11 @@ setInterval(() => {
     hoursTime = date.getHours();
     minutesTime = date.getMinutes();
     secondsTime = date.getSeconds();
+    millisecondsTime = date.getMilliseconds();
 
     hoursRotation = 30 * hoursTime + minutesTime / 2;
-    minutesRotation = 6 * minutesTime;
-    secondsRotation = 6 * secondsTime;
+    minutesRotation = 6 * minutesTime + secondsTime / 10 + (1 / 10000) * millisecondsTime;
+    secondsRotation = 6 * secondsTime + (3 / 500) * millisecondsTime;
 
     hour = document.getElementById("hour");
     minute = document.getElementById("minute");
@@ -15,4 +16,4 @@ setInterval(() => {
     hour.style.transform = `rotate(${hoursRotation}deg)`;
     minute.style.transform = `rotate(${minutesRotation}deg)`;
     second.style.transform = `rotate(${secondsRotation}deg)`;
-}, 1000);
+}, 1);
